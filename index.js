@@ -13,12 +13,13 @@ import {
     requireNativeComponent,
     View,
     Platform,
-    ProgressBarAndroid,
     ProgressViewIOS,
     ViewPropTypes,
     StyleSheet,
     Image
 } from 'react-native';
+
+import { Spinner } from '@shoutem/ui';
 
 import RNFetchBlob from 'rn-fetch-blob';
 
@@ -399,13 +400,7 @@ export default class Pdf extends Component {
                                 {this.props.activityIndicator
                                     ? this.props.activityIndicator
                                     : Platform.OS === 'android'
-                                        ? <ProgressBarAndroid
-                                            progress={this.state.progress}
-                                            indeterminate={false}
-                                            styleAttr="Horizontal"
-                                            style={styles.progressBar}
-                                            {...this.props.activityIndicatorProps}
-                                        />
+                                        ? <Spinner />
                                         : <ProgressViewIOS
                                             progress={this.state.progress}
                                             style={styles.progressBar}
